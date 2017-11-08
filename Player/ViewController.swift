@@ -8,11 +8,24 @@
 
 import UIKit
 
+import Utils
+
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var play: UIButton!
+    @IBOutlet weak var pause: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        print(DocumentUtil.Directory.documents.path)
+        play.onTouchUpInside{ _ in
+            AudioPlayerModel.instance.play()
+        }
+        
+        pause.onTouchUpInside{ _ in
+            AudioPlayerModel.instance.pause()
+        }
     }
 
     override func didReceiveMemoryWarning() {
