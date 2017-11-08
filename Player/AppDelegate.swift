@@ -20,22 +20,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     override func remoteControlReceived(with event: UIEvent?) {
-        guard let event = event else {
-            return
-        }
-        
-        //TODO
-        switch event.subtype {
-        case .remoteControlPlay:
-            break
-        case .remoteControlPause:
-            break
-        case .remoteControlNextTrack:
-            break
-        case .remoteControlPreviousTrack:
-            break
-        default:
-            break
+        if let event = event, event.type == .remoteControl {
+            //TODO
+            switch event.subtype {
+            case .remoteControlPlay:
+                break
+            case .remoteControlPause:
+                break
+            case .remoteControlNextTrack:
+                break
+            case .remoteControlPreviousTrack:
+                break
+            default:
+                break
+            }
         }
     }
 
