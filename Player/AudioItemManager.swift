@@ -13,9 +13,15 @@ import Utils
 
 class AudioItemManager {
     
+    static let shared = AudioItemManager()
+    private init() { }
+    
     private(set) var items: [AudioItem] = []
     
     func load() {
         items = DocumentUtil.list(dir: .documents).map{ AudioItem(path: $0) }
+        items.forEach{
+            print($0.path)
+        }
     }
 }

@@ -7,18 +7,39 @@
 //
 
 import Foundation
+import AVFoundation
+
 import Utils
 
 class AudioPlayerModel {
     static let instance = AudioPlayerModel()
     private init() { }
     
+    private var playQueue: [AudioItem] = []
+    
+    var isShuffle: Bool = false
+    var isLoop: Bool = false
+    
+    private var player: AVAudioPlayer?
+    
     func play() {
+        player?.pause()
         //TODO
+        AudioItemManager.shared.load()
+        playQueue = AudioItemManager.shared.items
+        if let url = playQueue.first?.path.fileUrl {
+            do {
+                player = try AVAudioPlayer(contentsOf: url)
+                player?.prepareToPlay()
+                player?.play()
+            } catch {
+                return
+            }
+        }
     }
     
     func pause() {
-        //TODO
+        player?.pause()
     }
     
     func next() {
@@ -28,6 +49,9 @@ class AudioPlayerModel {
     func previous() {
         //TODO
     }
-
     
+    func shuffle() {
+        //TODO
+    }
+
 }
