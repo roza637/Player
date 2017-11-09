@@ -32,7 +32,8 @@ class AudioPlayerModel {
                 player = try AVAudioPlayer(contentsOf: url)
                 player?.prepareToPlay()
                 player?.play()
-            } catch {
+            } catch let error {
+                debugPrint("play error:\(error.localizedDescription)")
                 return
             }
         }

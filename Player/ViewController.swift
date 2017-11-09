@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print(DocumentUtil.Directory.documents.path)
+        debugPrint(DocumentUtil.Directory.documents.path)
         play.onTouchUpInside{ _ in
             AudioPlayerModel.instance.play()
         }
