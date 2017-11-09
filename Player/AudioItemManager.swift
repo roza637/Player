@@ -19,7 +19,7 @@ class AudioItemManager {
     private(set) var items: [AudioItem] = []
     
     func load() {
-        items = DocumentUtil.list(dir: .documents).map{ AudioItem(path: $0) }
+        items = DocumentUtil.listPath(dir: .documents).map{ AudioItem(path: $0) }
         items.forEach{
             debugPrint($0.path)
         }
