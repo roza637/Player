@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import UIKit
 
 class AudioItem {
     var path: String
@@ -23,4 +24,25 @@ class AudioItem {
             return nil
         }
     }
+    
+    var asset: AVAsset {
+        return AVAsset(url: URL(fileURLWithPath: path))
+    }
+    
+    var title: String? {
+        return asset.commonMetadata.first{ $0.identifier == AVMetadataCommonKeyTitle }?.stringValue
+    }
+    
+    var albumName: String? {
+        return asset.commonMetadata.first{ $0.identifier == AVMetadataCommonKeyAlbumName }?.stringValue
+    }
+    
+    var artist: String? {
+        return asset.commonMetadata.first{ $0.identifier == AVMetadataCommonKeyArtist }?.stringValue
+    }
+    
+    var artWork: UIImage? {
+        return asset.commonMetadata.first{ $0.identifier == AVMetadataCommonKeyArtwork }?.dataValue.flatMap{ UIImage(data: $0) }
+    }
+    
 }
