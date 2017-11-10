@@ -10,6 +10,21 @@ import Foundation
 import AVFoundation
 import UIKit
 
+protocol ItemListProtocol {
+    var title: String {get}
+    var itemList: [AudioItem] {get}
+}
+
+class AudioItemList: ItemListProtocol {
+    var title: String
+    var itemList: [AudioItem]
+    
+    init(title: String, list: [AudioItem]) {
+        self.title = title
+        self.itemList = list
+    }
+}
+
 class AudioItem {
     var path: String
     
